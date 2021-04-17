@@ -1,0 +1,51 @@
+
+DEPLOY THE MACHINE!!!
+
+TASK#1 - SCAN
+
+The first thing we need to do is run a nmap to looks for open ports, vulnerabilities, operating systems and versions.
+
+I like to use the command
+
+nmap -sV -sC --script=vuln <insert here the target's IP>
+
+You could also insert the flag -O to find operating systems, but it requires you to run nmap as sudo.
+
+For a comprehensive guide on nmap usage, refer to https://nmap.org/book/toc.html
+
+SCREENSHOT
+
+
+Going through the finished scan, we can find all the answers for the first 5 questions of task#1. 
+
+For the last question, you can find the answer with a very simple, basic OSINT (or maybe you were paying attention in History class!)
+
+
+
+TASK#2 - GET IN
+
+We found very valuable information during our nmap scan, so it's time to use what we gathered to exploit this machine.
+
+My chosen way to exploit it is through Metasploit Framework, since I really like Metasploit (sorry, Offensive Security) 
+
+So let's start it by typing the command
+
+msfconsole
+
+Next, we search for our found vulnerability using the command
+
+search CVE-2015-3306
+
+There is only one result, so we will use that! The command is very simple
+
+use 0
+
+You will notice that the module was added to the prompt in red characters.
+
+SCREENSHOT
+
+We still need to get some things ready before we can run our exploit, so we type
+
+show options
+
+Here we need to set the RHOST (remote host, which is our target machine's IP).
